@@ -51,8 +51,7 @@ Y - y position on window as pixels.
 W - width of the recording screen.
 H - height of the recording screen.
 FILE-NAME - output file"
-  (let (process)
-    (setq process (start-process "byzanz-process" "*byzanz-output*" "byzanz-record"
+  (let ( (process (start-process "byzanz-process" "*byzanz-output*" "byzanz-record"
                                  "-c"
                                  "--duration" (number-to-string duration)
                                  "--delay" (number-to-string delay)
@@ -61,22 +60,14 @@ FILE-NAME - output file"
                                  "-w" (number-to-string w)
                                  "-h" (number-to-string h)
                                  file-name
-                                 ))
+                                 )))
 
     (set-process-sentinel process (lambda (process event)
                                     (let ((
-                                           answ (yes-or-no-p "Open created file? ")
-                                           ))
+                                           answ (yes-or-no-p "Open created file? ")))
                                       (when answ
-                                        (browse-url-firefox col/output-file)
-                                        )
-                                      )
-                                    (message "Process: %s Event: %s " process event)
-                                    )
-                          )
-    
-    )
-  )
+                                        (browse-url-firefox col/output-file)))
+                                    (message "Process: %s Event: %s " process event)))))
 
 
 
@@ -93,12 +84,11 @@ DURATION - duration of recording."
            (wind-height (window-pixel-height (selected-window)))
            (wind-width (window-pixel-width (selected-window)))
            )
-      
-      (setq col/output-file output-file)
-      (col/start-byzanz-process duration delay (nth 0 wind-edg) (nth 1 wind-edg) wind-width wind-height col/output-file)
-      )
-    
-    )
+      (setq col/output-file (expand-file-name output-file))
+      (col/start-byzanz-process duration delay
+                                (nth 0 wind-edg)
+                                (nth 1 wind-edg)
+                                wind-width wind-height col/output-file)))
 
 
 (provide 'e-byzanz)
