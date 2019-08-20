@@ -1,0 +1,20 @@
+#+author: Carl Olsem
+#+description: wrapper script for byzanz
+
+
+
+* Introduction
+
+This is a Emacs wrapper for "byzanz-record - small screencast creator".
+Created by Benjamine Otte. By using the window you are currently using
+and type =M-x byzanz-record= which is an interactive function. The
+function needs three arguments which will be asked for:
+
+   * ouput-filename :: the file to be created <file>.[gif|webm|flv|ogg,ogv]
+   * duration :: duration of the recording (in seconds)
+   * delay :: delay before start recording (in seconds) 
+
+After the initial delay, the record start (of the slected window) for
+the duration provided.
+
+
