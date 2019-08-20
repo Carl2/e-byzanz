@@ -17,4 +17,12 @@ function needs three arguments which will be asked for:
 After the initial delay, the record start (of the slected window) for
 the duration provided.
 
+Here is a real simple example output.
 
+[[./pics/ex1.gif]]
+
+
+** Another example using webm
+
+This is another example using =webm= 
+[[./pics/ex2.webm]]
